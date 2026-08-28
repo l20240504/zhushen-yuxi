@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>管理后台 · 诸神愚戏</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="page-container wide">
+    <h1 class="main-title">诸神愚戏</h1>
+    <p class="main-subtitle">信仰游戏<span class="sep">·</span>管理后台</p>
+
+    <div class="dash-header">
+      <span class="user-info">管理员：<strong id="admin-name">--</strong></span>
+      <div>
+        <button class="btn btn-secondary btn-sm" onclick="goToDashboard()">查看排行榜</button>
+        <button class="btn btn-secondary btn-sm" onclick="logout()">退出</button>
+      </div>
+    </div>
+
+    <!-- Pending Registrations -->
+    <div class="card admin-section">
+      <h2 class="admin-section-title">注册审核</h2>
+      <div id="pending-list">
+        <div class="loading">加载中</div>
+      </div>
+    </div>
+
+    <!-- User Management -->
+    <div class="card admin-section">
+      <h2 class="admin-section-title">玩家管理</h2>
+      <div class="message" id="admin-msg"></div>
+      <div id="users-list">
+        <div class="loading">加载中</div>
+      </div>
+    </div>
+
+    <!-- Change Password -->
+    <div class="card admin-section">
+      <h2 class="admin-section-title">修改密码</h2>
+      <div class="message" id="pwd-msg"></div>
+      <form onsubmit="return handleChangePassword(event)">
+        <div class="form-group">
+          <label class="form-label">旧密码</label>
+          <input type="password" class="form-input" id="old-pwd" placeholder="请输入旧密码" autocomplete="current-password">
+        </div>
+        <div class="form-group">
+          <label class="form-label">新密码</label>
+          <input type="password" class="form-input" id="new-pwd" placeholder="请输入新密码" autocomplete="new-password">
+        </div>
+        <button type="submit" class="btn btn-primary" id="pwd-btn">确认修改</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="/js/admin.js"></script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>排行榜 · 诸神愚戏</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="page-container">
+    <h1 class="main-title">诸神愚戏</h1>
+    <p class="main-subtitle">信仰游戏<span class="sep">·</span>命运试炼</p>
+
+    <div class="dash-header">
+      <span class="user-info">道友：<strong id="username-display">--</strong></span>
+      <button class="btn btn-secondary btn-sm" onclick="logout()">退出</button>
+    </div>
+
+    <div class="ranking-board">
+      <h2 class="board-title path">登神之路</h2>
+      <ul class="ranking-list" id="path-list">
+        <li class="empty-state">加载中</li>
+      </ul>
+    </div>
+
+    <div class="ranking-board board-ladder">
+      <h2 class="board-title ladder">觐见之梯</h2>
+      <ul class="ranking-list" id="ladder-list">
+        <li class="empty-state">加载中</li>
+      </ul>
+    </div>
+  </div>
+
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>

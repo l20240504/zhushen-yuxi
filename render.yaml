@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: zhushen-yuxi
+    runtime: node
+    plan: free
+    buildCommand: npm install && cd ../client && npm install && npm run build
+    startCommand: node index.js
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: DATABASE_SSL
+        value: "true"
+      - key: NODE_VERSION
+        value: "20.11.0"
+    repo: https://github.com/placeholder/zhushen-yuxi
+    rootDir: server

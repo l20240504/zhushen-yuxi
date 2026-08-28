@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>诸神愚戏 · 信仰游戏</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="page-container">
+    <h1 class="main-title">诸神愚戏</h1>
+    <p class="main-subtitle">信仰游戏<span class="sep">·</span>命运试炼</p>
+
+    <div class="card">
+      <div class="tabs">
+        <button class="tab active" id="tab-login" onclick="switchTab('login')">登录</button>
+        <button class="tab" id="tab-register" onclick="switchTab('register')">创建角色</button>
+      </div>
+
+      <div class="message" id="msg"></div>
+
+      <!-- Login Form -->
+      <form id="login-form" onsubmit="return handleLogin(event)">
+        <div class="form-group">
+          <label class="form-label">用户名</label>
+          <input type="text" class="form-input" id="login-username" placeholder="请输入用户名" autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label class="form-label">密码</label>
+          <input type="password" class="form-input" id="login-password" placeholder="请输入密码" autocomplete="current-password">
+        </div>
+        <label class="checkbox-group">
+          <input type="checkbox" id="login-agree" checked>
+          <span>我已阅读并同意<a href="/protocol" onclick="return openProtocol(event)">《用户协议》</a>和<a href="/protocol" onclick="return openProtocol(event)">《隐私政策》</a></span>
+        </label>
+        <label class="checkbox-group">
+          <input type="checkbox" id="login-remember" checked>
+          <span>记住登录状态（7天内无需重复登录）</span>
+        </label>
+        <button type="submit" class="btn btn-primary" id="login-btn">登录</button>
+      </form>
+
+      <!-- Register Form -->
+      <form id="register-form" onsubmit="return handleRegister(event)" style="display:none;">
+        <div class="form-group">
+          <label class="form-label">用户名</label>
+          <input type="text" class="form-input" id="reg-username" placeholder="请输入用户名（1-20个字符）" autocomplete="username">
+        </div>
+        <div class="form-group">
+          <label class="form-label">密码</label>
+          <input type="password" class="form-input" id="reg-password" placeholder="请输入密码" autocomplete="new-password">
+        </div>
+        <div class="form-group">
+          <label class="form-label">确认密码</label>
+          <input type="password" class="form-input" id="reg-confirm" placeholder="请再次输入密码" autocomplete="new-password">
+        </div>
+        <label class="checkbox-group">
+          <input type="checkbox" id="reg-agree">
+          <span>我已阅读并同意<a href="/protocol" onclick="return openProtocol(event)">《用户协议》</a>和<a href="/protocol" onclick="return openProtocol(event)">《隐私政策》</a></span>
+        </label>
+        <button type="submit" class="btn btn-primary" id="register-btn">提交注册</button>
+      </form>
+
+      <div id="login-link" style="display:none;">
+        <a href="#" class="text-link" onclick="switchTab('login'); return false;">已有账号？<strong>返回登录</strong></a>
+      </div>
+      <div id="register-link">
+        <a href="#" class="text-link" onclick="switchTab('register'); return false;">还没有账号？<strong>立即注册</strong></a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Protocol Modal -->
+  <div class="modal-overlay" id="protocol-modal">
+    <div class="modal">
+      <h2 class="modal-title">用户协议与隐私政策</h2>
+      <div class="modal-body">
+        <h3>一、用户协议</h3>
+        <p>1. 欢迎使用「诸神愚戏」信仰游戏系统。注册即代表您同意本协议各项条款。</p>
+        <p>2. 用户须提供真实、准确的注册信息。管理员有权审核、批准或拒绝注册申请。</p>
+        <p>3. 用户账号及密码由用户自行保管，因保管不善导致的损失由用户自行承担。</p>
+        <p>4. 用户应遵守相关法律法规，不得利用本系统从事任何违法违规活动。</p>
+        <p>5. 管理员有权调整用户分数、权限等级，有权删除违规账号。</p>
+
+        <h3>二、隐私政策</h3>
+        <p>1. 本系统收集的用户信息包括：用户名、密码（加密存储）、分数数据。</p>
+        <p>2. 用户密码采用加密存储，任何人无法查看明文密码。</p>
+        <p>3. 管理员的密码为系统机密，受到严格保护。</p>
+        <p>4. 本系统不向第三方分享用户数据。</p>
+        <p>5. 用户分数及排名信息为公开可见数据。</p>
+
+        <h3>三、免责声明</h3>
+        <p>1. 本系统为「诸神愚戏」信仰游戏专用，仅供娱乐使用。</p>
+        <p>2. 系统管理员保留对本协议的最终解释权。</p>
+      </div>
+      <button class="btn btn-secondary modal-close" onclick="closeProtocol()">我知道了</button>
+    </div>
+  </div>
+
+  <script src="/js/auth.js"></script>
+</body>
+</html>

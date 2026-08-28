@@ -1,0 +1,180 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100% / .4;
+  --foreground: 0 0% 0%;
+  --card: 0 0% 100% / .4;
+  --card-foreground: 0 0% 0%;
+  --primary: 0 0% 100% / .4;
+  --primary-foreground: 0 0% 0%;
+  --secondary: 0 0% 100% / .4;
+  --muted: 0 0% 100% / .4;
+  --accent: 0 0% 100% / .4;
+  --destructive: 0 0% 100% / .4;
+  --border: 0 0% 0%;
+  --radius: .75rem;
+  --status-recruiting: 56 100% 65%;
+  --status-ongoing: 230 66% 36%;
+  --status-finished: 348 83% 47%;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  color: #fff;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+
+.page-bg {
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.glass {
+  background: rgba(255,255,255,.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: var(--radius);
+}
+
+.glass-card {
+  background: rgba(255,255,255,.08);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.12);
+  border-radius: var(--radius);
+  padding: 1rem;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #fff, rgba(255,255,255,.6));
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn-primary {
+  background: rgba(255,255,255,.15);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255,255,255,.2);
+  color: #fff;
+  padding: .6rem 1.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all .2s;
+  text-shadow: 0 1px 3px rgba(0,0,0,.5);
+}
+.btn-primary:hover { background: rgba(255,255,255,.25); }
+.btn-primary:disabled { opacity: .5; cursor: not-allowed; }
+.btn-primary:active { transform: scale(.97); }
+
+.btn-danger {
+  background: rgba(348,83%,47%,.3);
+  border: 1px solid rgba(348,83%,47%,.5);
+  color: #fff;
+  padding: .6rem 1.5rem;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: all .2s;
+}
+.btn-danger:hover { background: rgba(348,83%,47%,.5); }
+
+input, textarea, select {
+  background: rgba(255,255,255,.1);
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: var(--radius);
+  padding: .6rem .8rem;
+  color: #fff;
+  outline: none;
+  width: 100%;
+  font-size: 1rem;
+}
+input::placeholder, textarea::placeholder { color: rgba(255,255,255,.5); }
+input:focus, textarea:focus { border-color: rgba(255,255,255,.4); }
+
+.grade-D { color: #aaa; }
+.grade-C { color: #4ade80; }
+.grade-B { color: #60a5fa; }
+.grade-A { color: #c084fc; }
+.grade-S { color: #fbbf24; }
+.grade-SS { color: #f472b6; }
+.grade-SSS { color: #ef4444; }
+
+.status-recruiting { color: hsl(var(--status-recruiting)); }
+.status-ongoing { color: hsl(var(--status-ongoing)); }
+.status-finished { color: hsl(var(--status-finished)); }
+
+.bg-status-recruiting { background: hsl(var(--status-recruiting) / .2); }
+.bg-status-ongoing { background: hsl(var(--status-ongoing) / .2); }
+.bg-status-finished { background: hsl(var(--status-finished) / .2); }
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,.2); border-radius: 4px; }
+
+.nav-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  background: rgba(0,0,0,.4);
+  backdrop-filter: blur(12px);
+  border-top: 1px solid rgba(255,255,255,.1);
+  padding: .5rem 0;
+  z-index: 100;
+}
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .2rem;
+  color: rgba(255,255,255,.5);
+  font-size: .7rem;
+  cursor: pointer;
+  transition: color .2s;
+}
+.nav-item.active { color: #fff; }
+.nav-item svg { width: 1.5rem; height: 1.5rem; }
+
+.page-with-nav { padding-bottom: 4rem; }
+
+.toast {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  background: rgba(0,0,0,.7);
+  backdrop-filter: blur(10px);
+  color: #fff;
+  padding: .8rem 1.5rem;
+  border-radius: var(--radius);
+  z-index: 9999;
+  font-size: .9rem;
+}
+
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.5);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 1rem;
+}
+.modal-content {
+  background: rgba(20,20,30,.85);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255,255,255,.15);
+  border-radius: var(--radius);
+  padding: 1.5rem;
+  max-width: 28rem;
+  width: 100%;
+  max-height: 80vh;
+  overflow-y: auto;
+}

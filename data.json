@@ -1,0 +1,27 @@
+{
+  "users": [
+    {
+      "id": "1621e6ad-cab6-4d0e-8f9d-438de213c8c4",
+      "username": "管理员",
+      "passwordHash": "46899a9c1a26db0afce7ade986a2c2aa:4c139a50136975dc28ce8da1d8aa5d9ae51f7d924fbf4f5900e7690b2aaa2adfed3f00e07da8565270c1a9a82305715704885e78e3c8ba810506db40547799ee",
+      "role": "admin",
+      "status": "approved",
+      "scorePath": 0,
+      "scoreLadder": 0,
+      "createdAt": "2026-08-23T09:18:41.581Z",
+      "approvedAt": "2026-08-23T09:18:41.582Z"
+    },
+    {
+      "id": "bbb76591-5028-492f-8433-7567d993acf1",
+      "username": "晞",
+      "passwordHash": "c590c99b56ae44c7d4c951aca788ab60:a633f181cb28ec7aa51b35ff5fb82cf0fbf3db0d91b8db633120902e1994c3f1487acf4faed53ec0e6725316b7bb52aead848da92e0f4352523662b37f822523",
+      "role": "viewer",
+      "status": "approved",
+      "scorePath": 0,
+      "scoreLadder": 0,
+      "createdAt": "2026-08-23T09:21:49.860Z",
+      "approvedAt": "2026-08-23T09:22:05.638Z"
+    }
+  ],
+  "initialized": true
+}

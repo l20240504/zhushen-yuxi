@@ -1,0 +1,12 @@
+node_modules/
+dist/
+uploads/
+.env
+*.log
+.DS_Store
+.dumate/
+nul
+*.db
+*.db-shm
+*.db-wal
+程序/
