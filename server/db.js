@@ -2,11 +2,10 @@ import { Pool } from 'pg';
 
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  max: 10,
-  idleTimeoutMillis: 30000,
+  max: process.env.VERCEL ? 3 : 10,
+  idleTimeoutMillis: 10000,
   connectionTimeoutMillis: 10000,
   ssl: process.env.DATABASE_SSL === 'true' ? { rejectUnauthorized: false } : undefined,
-  // Transaction pooler mode (port 6543) doesn't support prepared statements
   ...(process.env.DATABASE_URL && process.env.DATABASE_URL.includes(':6543') ? { statement_timeout: 30000 } : {}),
 });
 
