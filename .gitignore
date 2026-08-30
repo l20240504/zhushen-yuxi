@@ -10,3 +10,9 @@ nul
 *.db-shm
 *.db-wal
 程序/
+check-edge.ps1
+fix-cdp.ps1
+kill-cdp.ps1
+restart-edge.ps1
+set-cdp.ps1
+start-edge-cdp.ps1
