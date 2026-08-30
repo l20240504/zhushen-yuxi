@@ -1051,16 +1051,17 @@ app.get('/api/trials/:trialId/unread/:charId', async (req, res) => {
 });
 
 // ============ IMAGE UPLOAD ============
+const uploadDir = process.env.VERCEL ? '/tmp/uploads' : 'uploads';
 app.post('/api/upload', authMid, upload.single('file'), (req, res) => {
   if (!req.file) return res.status(400).json({ error: '没有文件' });
   const filename = `${Date.now()}-${Math.random().toString(36).substr(2,9)}.jpg`;
-  const dir = 'uploads';
-  if (!fs.existsSync(dir)) fs.mkdirSync(dir);
+  const dir = uploadDir;
+  if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
   fs.writeFileSync(`${dir}/${filename}`, req.file.buffer);
   res.json({ url: `/uploads/${filename}` });
 });
 
-app.use('/uploads', express.static('uploads'));
+app.use('/uploads', express.static(uploadDir));
 
 // ============ ADMIN LOGS ============
 app.post('/api/admin-logs', authMid, adminMid, async (req, res) => {
@@ -1312,10 +1313,26 @@ const clientDir = path.join(__dirname, '../client/dist');
 app.use(express.static(clientDir));
 app.get('*', (req, res) => { res.sendFile(path.join(clientDir, 'index.html')); });
 
-// Initialize and start
-async function start() {
-  await initSchema();
-  await seedData();
-  app.listen(PORT, '0.0.0.0', () => { console.log(`Server running on http://0.0.0.0:${PORT}`); });
+// Initialize DB schema on first cold start
+let _initialized = false;
+async function ensureInit() {
+  if (!_initialized) {
+    _initialized = true;
+    await initSchema();
+    await seedData();
+  }
 }
-start();
+
+// Vercel serverless export
+export default async function handler(req, res) {
+  await ensureInit();
+  return app(req, res);
+}
+
+// Local direct run
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+  const PORT = process.env.PORT || 3456;
+  ensureInit().then(() => {
+    app.listen(PORT, '0.0.0.0', () => { console.log(`Server running on http://0.0.0.0:${PORT}`); });
+  });
+}
