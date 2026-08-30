@@ -1,0 +1,16 @@
+{
+  "name": "zhushen-yuxi",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "build": "cd client && npm install && npm run build",
+    "start": "cd server && node index.js"
+  },
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.4.2",
+    "express": "^4.21.0",
+    "multer": "^1.4.5-lts.1",
+    "pg": "^8.23.0"
+  }
+}
