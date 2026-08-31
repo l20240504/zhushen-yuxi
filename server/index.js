@@ -1329,10 +1329,10 @@ export default async function handler(req, res) {
   return app(req, res);
 }
 
-// Local direct run
-if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
-  const PORT = process.env.PORT || 3456;
+// Start HTTP server (skip only in Vercel serverless environment)
+if (!process.env.VERCEL) {
+  const serverPort = process.env.PORT || 3456;
   ensureInit().then(() => {
-    app.listen(PORT, '0.0.0.0', () => { console.log(`Server running on http://0.0.0.0:${PORT}`); });
+    app.listen(serverPort, '0.0.0.0', () => { console.log(`Server running on http://0.0.0.0:${serverPort}`); });
   });
 }
