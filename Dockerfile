@@ -18,6 +18,6 @@ WORKDIR /app/server
 ENV NODE_ENV=production
 ENV DATABASE_SSL=true
 
-EXPOSE 10000
+EXPOSE 3456
 
 CMD ["node", "index.js"]
